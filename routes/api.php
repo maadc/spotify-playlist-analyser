@@ -19,3 +19,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/auth', 'AuthController@key');
+Route::get('/searchPlaylist/{q}', 'PlaylistController@searchPlaylist');

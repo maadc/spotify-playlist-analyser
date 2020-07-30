@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 class AuthController extends Controller
 {
-    public function key()
+    public static function key()
     {
         $url = 'https://accounts.spotify.com/api/token';
         $data = array('client_id' => env('SPOTIFY_CLIENTID'), 'client_secret' => env('SPOTIFY_CLIENTSECRET'), 'grant_type' => 'client_credentials');
