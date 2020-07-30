@@ -1,0 +1,36 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateTableTopPlaylist extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('top-playlists', function (Blueprint $table) {
+            $table->primary('spotifyID');
+            $table->string("spotifyID", 23);
+            $table->string('name', 60);
+            $table->string('owner', 60);
+            $table->dateTime('lastSearched');
+            $table->integer("counter")->default(1);
+            $table->text("mainImageURL");
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('top-playlists');
+    }
+}
