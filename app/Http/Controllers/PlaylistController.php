@@ -18,7 +18,7 @@ class PlaylistController extends Controller
         $result = json_decode(file_get_contents($url, false, $context));
         if (is_object($result)) {
 
-            if (empty($result->playlist->items)) {
+            if (empty($result->playlists->items)) {
                 return response("no playlist found", 404);
             }
 
