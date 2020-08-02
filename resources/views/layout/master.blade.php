@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Spotify Playlist Analyser</title>
     <link rel="stylesheet" href="{{ URL::asset('css/app.css') }}">
 </head>
@@ -20,7 +21,9 @@
 </header>
 
 <main>
-    @yield('content')
+    <div id="app">
+        @yield('content')
+    </div>
 </main>
 
 <footer class="navbar">
@@ -32,5 +35,6 @@
         <p class="green btn btn-link">Copyright: 2020 - <?php echo date("Y");?></p>
     </section>
 </footer>
+<script src="{{URL::asset('js/app.js')}}"></script>
 </body>
 </html>
