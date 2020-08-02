@@ -1,22 +1,27 @@
 <template>
-    <div>
+    <div class="column col-12 col-mx-auto">
 
         <!-- todo optional PlaylistId / Spotify URI -->
-        <div class="input-group">
-            <input class="form-input" id="playlist-input" placeholder="Playlist" type="text">
-            <button class="input-group-addon" type="submit" v-on:click="fetchPlaylists()">Submit</button>
+        <div class="container">
+            <input class="form-input" id="playlist-input" placeholder="search for playlist name" type="text"
+                   v-on:keyup.enter="onEnter">
+            <button id="send" type="submit" v-on:click="fetchPlaylists()"><img alt="start search"
+                                                                               src="../../img/arrow-right.svg" title="go!">
+            </button>
         </div>
 
         <div class="container hidden" id="result-container">
-            <div class="result columns" v-for="playlist of playlists">
+            <div class="result columns mb-2" v-for="playlist of playlists">
                 <!-- todo if URl empty -->
-                <div class="col-auto"><img alt="Playlist title image" v-bind:src="playlist.mainImageURL"></div>
-                <div class="col-auto"><p><b>{{ playlist.name }}</b> <br> {{ playlist.owner }}</p></div>
-                <div class="col-ml-auto">
+                <div class="col-sm-12 col-md-4 col-lg-4 col-xl-3 col-2"><img alt="Playlist title image"
+                                                                    v-bind:src="playlist.mainImageURL"></div>
+                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-7 col-8"><p><b>{{ playlist.name }}</b> <br> {{ playlist.owner }}
+                </p></div>
+                <div class="col-sm-12 col-lg-3 col-2">
                     <form action="/playlist" class="text-center input-group" method="POST">
                         <input name="_token" type="hidden" v-bind:value="csrf">
                         <input name="nachricht" type="hidden" v-bind:value=" JSON.stringify(playlist)">
-                        <input class="input-group-addon" type="submit" value="Abschicken">
+                        <input class="input-group-addon" type="submit" value="analyse">
                     </form>
                 </div>
             </div>
@@ -33,12 +38,19 @@ export default {
         }
     },
     methods: {
+        onEnter() {
+            this.fetchPlaylists();
+        },
         fetchPlaylists() {
             let formInput = document.getElementById("playlist-input");
             const input = formInput.value;
+            if (input) {
+                this.fetch(input);
+                formInput.value = "";
+            } else {
 
-            this.fetch(input);
-            formInput.value = "";
+            }
+
         },
         fetch(query) {
             fetch("api/searchPlaylist/" + query)

@@ -1934,6 +1934,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1942,11 +1947,17 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    onEnter: function onEnter() {
+      this.fetchPlaylists();
+    },
     fetchPlaylists: function fetchPlaylists() {
       var formInput = document.getElementById("playlist-input");
       var input = formInput.value;
-      this.fetch(input);
-      formInput.value = "";
+
+      if (input) {
+        this.fetch(input);
+        formInput.value = "";
+      } else {}
     },
     fetch: function (_fetch) {
       function fetch(_x) {
@@ -37569,25 +37580,47 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("div", { staticClass: "input-group" }, [
+  return _c("div", { staticClass: "column col-12 col-mx-auto" }, [
+    _c("div", { staticClass: "container" }, [
       _c("input", {
         staticClass: "form-input",
-        attrs: { id: "playlist-input", placeholder: "Playlist", type: "text" }
+        attrs: {
+          id: "playlist-input",
+          placeholder: "search for playlist name",
+          type: "text"
+        },
+        on: {
+          keyup: function($event) {
+            if (
+              !$event.type.indexOf("key") &&
+              _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+            ) {
+              return null
+            }
+            return _vm.onEnter($event)
+          }
+        }
       }),
       _vm._v(" "),
       _c(
         "button",
         {
-          staticClass: "input-group-addon",
-          attrs: { type: "submit" },
+          attrs: { id: "send", type: "submit" },
           on: {
             click: function($event) {
               return _vm.fetchPlaylists()
             }
           }
         },
-        [_vm._v("Submit")]
+        [
+          _c("img", {
+            attrs: {
+              alt: "start search",
+              src: __webpack_require__(/*! ../../img/arrow-right.svg */ "./resources/img/arrow-right.svg"),
+              title: "go!"
+            }
+          })
+        ]
       )
     ]),
     _vm._v(" "),
@@ -37595,23 +37628,34 @@ var render = function() {
       "div",
       { staticClass: "container hidden", attrs: { id: "result-container" } },
       _vm._l(_vm.playlists, function(playlist) {
-        return _c("div", { staticClass: "result columns" }, [
-          _c("div", { staticClass: "col-auto" }, [
-            _c("img", {
-              attrs: { alt: "Playlist title image", src: playlist.mainImageURL }
-            })
-          ]),
+        return _c("div", { staticClass: "result columns mb-2" }, [
+          _c(
+            "div",
+            { staticClass: "col-sm-12 col-md-4 col-lg-4 col-xl-3 col-2" },
+            [
+              _c("img", {
+                attrs: {
+                  alt: "Playlist title image",
+                  src: playlist.mainImageURL
+                }
+              })
+            ]
+          ),
           _vm._v(" "),
-          _c("div", { staticClass: "col-auto" }, [
-            _c("p", [
-              _c("b", [_vm._v(_vm._s(playlist.name))]),
-              _vm._v(" "),
-              _c("br"),
-              _vm._v(" " + _vm._s(playlist.owner))
-            ])
-          ]),
+          _c(
+            "div",
+            { staticClass: "col-sm-12 col-md-6 col-lg-6 col-xl-7 col-8" },
+            [
+              _c("p", [
+                _c("b", [_vm._v(_vm._s(playlist.name))]),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(" " + _vm._s(playlist.owner) + "\n            ")
+              ])
+            ]
+          ),
           _vm._v(" "),
-          _c("div", { staticClass: "col-ml-auto" }, [
+          _c("div", { staticClass: "col-sm-12 col-lg-3 col-2" }, [
             _c(
               "form",
               {
@@ -37631,7 +37675,7 @@ var render = function() {
                 _vm._v(" "),
                 _c("input", {
                   staticClass: "input-group-addon",
-                  attrs: { type: "submit", value: "Abschicken" }
+                  attrs: { type: "submit", value: "analyse" }
                 })
               ]
             )
@@ -49808,6 +49852,17 @@ module.exports = function(module) {
 	return module;
 };
 
+
+/***/ }),
+
+/***/ "./resources/img/arrow-right.svg":
+/*!***************************************!*\
+  !*** ./resources/img/arrow-right.svg ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/arrow-right.svg?3387e93d8f7c57ab22a18885ca29bbd9";
 
 /***/ }),
 
