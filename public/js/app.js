@@ -1938,7 +1938,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      playlist: [],
+      playlists: [],
       csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
     };
   },
@@ -1966,7 +1966,7 @@ __webpack_require__.r(__webpack_exports__);
         return res.json();
       }).then(function (res) {
         console.log(res);
-        _this.playlist = res;
+        _this.playlists = res;
         document.getElementById('result-container').className = 'container shown';
       })["catch"](function (error) {
         return console.log('error', error);
@@ -37594,23 +37594,20 @@ var render = function() {
     _c(
       "div",
       { staticClass: "container hidden", attrs: { id: "result-container" } },
-      [
-        _c("div", { staticClass: "result columns" }, [
+      _vm._l(_vm.playlists, function(playlist) {
+        return _c("div", { staticClass: "result columns" }, [
           _c("div", { staticClass: "col-auto" }, [
             _c("img", {
-              attrs: {
-                src: _vm.playlist.mainImageURL,
-                alt: "Playlist title image"
-              }
+              attrs: { src: playlist.mainImageURL, alt: "Playlist title image" }
             })
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "col-auto" }, [
             _c("p", [
-              _c("b", [_vm._v(_vm._s(_vm.playlist.name))]),
+              _c("b", [_vm._v(_vm._s(playlist.name))]),
               _vm._v(" "),
               _c("br"),
-              _vm._v(" " + _vm._s(_vm.playlist.owner))
+              _vm._v(" " + _vm._s(playlist.owner))
             ])
           ]),
           _vm._v(" "),
@@ -37629,7 +37626,7 @@ var render = function() {
                 _vm._v(" "),
                 _c("input", {
                   attrs: { type: "hidden", name: "nachricht" },
-                  domProps: { value: _vm.playlist.spotifyID }
+                  domProps: { value: playlist.spotifyID }
                 }),
                 _vm._v(" "),
                 _c("input", {
@@ -37640,7 +37637,8 @@ var render = function() {
             )
           ])
         ])
-      ]
+      }),
+      0
     )
   ])
 }

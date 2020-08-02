@@ -9,7 +9,7 @@
 
         <div id="result-container" class="container hidden">
 
-            <div class="result columns">
+            <div v-for="playlist of playlists" class="result columns">
                 <div class="col-auto"><img v-bind:src="playlist.mainImageURL" alt="Playlist title image"></div>
                 <div class="col-auto"><p><b>{{ playlist.name }}</b> <br> {{ playlist.owner }}</p></div>
                 <div class="col-ml-auto">
@@ -29,7 +29,7 @@
 export default {
     data() {
         return {
-            playlist: [],
+            playlists: [],
             csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
         }
     },
@@ -46,7 +46,7 @@ export default {
                 .then(res => res.json())
                 .then(res => {
                     console.log(res)
-                    this.playlist = res;
+                    this.playlists = res;
                     document.getElementById('result-container').className = 'container shown'
                 })
                 .catch(error => console.log('error', error));

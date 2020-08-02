@@ -6,7 +6,7 @@ class PlaylistController extends Controller
 {
     public function searchPlaylist($query)
     {
-        $url = 'https://api.spotify.com/v1/search?q=' . rawurlencode($query) . '&type=playlist&limit=1';
+        $url = 'https://api.spotify.com/v1/search?q=' . rawurlencode($query) . '&type=playlist&limit=5';
         $token = AuthController::key()->content();
         $options = array(
             'http' => array(
@@ -22,13 +22,19 @@ class PlaylistController extends Controller
                 return response("no playlist found", 404);
             }
 
-            $playlist = $result->playlists;
-            $playlistObject = array("spotifyID" => $playlist->items[0]->id,
-                "name" => $playlist->items[0]->name,
-                "owner" => $playlist->items[0]->owner->display_name,
-                "lastSearches" => date("d/m/y/h/m"),
-                "mainImageURL" => $playlist->items[0]->images[0]->url);
-            return response($playlistObject, 200);
+            //Array containing all playlist results
+            $playlistArray = [];
+            foreach ($result->playlists->items as $key =>$list){
+
+                $playlistArray[$key] = array(
+                    "spotifyID" => $list->id,
+                    "name" => $list->name,
+                    "owner" => $list->owner->display_name,
+                    "lastSearches" => date("d/m/y/h/m"),
+                    "mainImageURL" => $list->images[0]->url);
+            }
+
+            return response($playlistArray, 200);
 
         } else {
             return response("Loading Playlist error ", 400);
