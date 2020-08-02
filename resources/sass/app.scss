@@ -1,8 +1,53 @@
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+//Variables
+@import "variables";
+@import "home";
+@import "playlist-page";
 
-// Variables
-@import 'variables';
+//Spectre
+@import "~spectre.css/dist/spectre.min.css";
+@import "~spectre.css/dist/spectre-exp.min.css";
+@import "~spectre.css/dist/spectre-icons.min.css";
 
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
+//Main Settings
+body{
+    background-color: $black;
+}
+h1, .h1,
+h2, .h2,
+h3, .h3{
+    color: $green;
+}
+
+.green{
+    color: $green;
+}
+
+/*
+*
+* Main
+*
+*/
+
+
+/*
+*
+* Navbar
+*
+*/
+
+.navbar {
+    background-color: #060606;
+    padding: 1rem 0 1rem 0;
+
+}
+.navbar a {
+    font-size: 1rem;
+}
+.navbar .btn.btn-link.green{
+    color: $green;
+}
+
+.navbar p.btn{
+    cursor: auto;
+}
+

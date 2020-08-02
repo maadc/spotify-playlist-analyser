@@ -13,6 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'HomeController@index');
+Route::get('/', 'HomeController@index')->name('start');
 
-Route::post('playlist', 'TrackController@trackAnalysis')->name('playlist.analyse');
+Route::post('/playlist', 'TrackController@trackAnalysis')->name('playlist.analyse');

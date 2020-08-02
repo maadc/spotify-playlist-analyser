@@ -1,0 +1,12 @@
+#home-container{
+    margin-top: 3rem;
+    min-height: calc(100vh - 3rem - 76px - 100px);
+
+}
+
+#home-container .form-input{
+    height: 4rem;
+    border-radius: 2rem;
+    font-weight: bold;
+    padding-left: 38px;
+}

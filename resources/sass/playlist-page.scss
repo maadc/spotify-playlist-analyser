@@ -1,0 +1,24 @@
+#playlist-container{
+    min-height: calc(100vh - 76px - 100px);
+}
+
+table.track-list th {
+    color: white;
+    border-bottom: 2px solid whitesmoke;
+}
+
+table.track td {
+    color: white;
+}
+
+table.track tr td,
+table.track-list tr th{
+    min-width: 5vw;
+    text-align: left;
+}
+
+
+table.track tr td:nth-of-type(1),
+table.track-list tr th:nth-of-type(1){
+    width: calc(50vw - 5vw*6)
+}

@@ -44,7 +44,7 @@ class TrackController extends Controller
                 "id" => $track->track->id,
                 "name" => $track->track->name,
                 "artists" => $artists,
-                "duration" => $track->track->duration_ms,
+                "duration" => $track->track->duration_ms / 1000, //ms -> s
                 "popularity" => $track->track->popularity,
                 "audioFeatures" => []
             ]);
