@@ -6,7 +6,8 @@ class TrackController extends Controller
 {
     public function trackAnalysis()
     {
-        $playlistID = request("nachricht");
+        $playlist = json_decode(request("nachricht"));
+        $playlistID = $playlist->spotifyID;
         $token = AuthController::key()->content();
 
         $url = 'https://api.spotify.com/v1/playlists/' . rawurlencode($playlistID) . '/tracks';
@@ -83,7 +84,7 @@ class TrackController extends Controller
                 ];
             $trackArray[$key]["audioFeatures"] = $trackAudioFeatures;
         }
-        return view('playlist', ["trackArray" => json_encode($trackArray)]);
+        return view('playlist', ["trackArray" => json_encode($trackArray), "playlist" => $playlist]);
     }
 
     public static function getAudioFeatures($trackIDString, $token)

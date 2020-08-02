@@ -1934,7 +1934,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1965,11 +1964,12 @@ __webpack_require__.r(__webpack_exports__);
       fetch("api/searchPlaylist/" + query).then(function (res) {
         return res.json();
       }).then(function (res) {
-        console.log(res);
         _this.playlists = res;
         document.getElementById('result-container').className = 'container shown';
       })["catch"](function (error) {
-        return console.log('error', error);
+        console.log('error', error);
+        document.getElementById('result-container').className = 'container shown';
+        document.getElementById('result-container').innerHTML = "<h3>Sorry, no playlist found!</h3>";
       });
     })
   }
@@ -37573,7 +37573,7 @@ var render = function() {
     _c("div", { staticClass: "input-group" }, [
       _c("input", {
         staticClass: "form-input",
-        attrs: { id: "playlist-input", type: "text", placeholder: "Playlist" }
+        attrs: { id: "playlist-input", placeholder: "Playlist", type: "text" }
       }),
       _vm._v(" "),
       _c(
@@ -37598,7 +37598,7 @@ var render = function() {
         return _c("div", { staticClass: "result columns" }, [
           _c("div", { staticClass: "col-auto" }, [
             _c("img", {
-              attrs: { src: playlist.mainImageURL, alt: "Playlist title image" }
+              attrs: { alt: "Playlist title image", src: playlist.mainImageURL }
             })
           ]),
           _vm._v(" "),
@@ -37620,13 +37620,13 @@ var render = function() {
               },
               [
                 _c("input", {
-                  attrs: { type: "hidden", name: "_token" },
+                  attrs: { name: "_token", type: "hidden" },
                   domProps: { value: _vm.csrf }
                 }),
                 _vm._v(" "),
                 _c("input", {
-                  attrs: { type: "hidden", name: "nachricht" },
-                  domProps: { value: playlist.spotifyID }
+                  attrs: { name: "nachricht", type: "hidden" },
+                  domProps: { value: JSON.stringify(playlist) }
                 }),
                 _vm._v(" "),
                 _c("input", {

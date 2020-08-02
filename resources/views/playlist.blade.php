@@ -2,7 +2,7 @@
 
 @section('content')
     <div id="playlist-container" class="container">
-        <h1> Here is your Playlist! </h1>
+        <h1> {{$playlist->name}} by {{$playlist->owner}} </h1>
         <table class="track-list">
             <thead>
             <tr>
