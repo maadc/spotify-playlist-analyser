@@ -7,6 +7,8 @@ class TrackController extends Controller
     public function trackAnalysis()
     {
         $playlist = json_decode(request("nachricht"));
+        // todo save playlist in top-playlists.db
+
         $playlistID = $playlist->spotifyID;
         $token = AuthController::key()->content();
 
@@ -40,6 +42,8 @@ class TrackController extends Controller
 
             /*
              * Save all properties of this track in the trackArray containing all Tracks
+             * todo: save track in top-tracks.db
+             * todo: duration in Minutes and Seconds
              */
             array_push($trackArray, [
                 "id" => $track->track->id,

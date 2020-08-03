@@ -6,6 +6,7 @@ class PlaylistController extends Controller
 {
     public function searchPlaylist($query)
     {
+
         $url = 'https://api.spotify.com/v1/search?q=' . rawurlencode($query) . '&type=playlist&limit=5';
         $token = AuthController::key()->content();
         $options = array(

@@ -17,6 +17,13 @@ h3, .h3{
     color: $green;
 }
 
+h2, .h2{
+    font-size: 1.25rem;
+}
+h3, .h3{
+    font-size: 0.8rem;
+}
+
 .green{
     color: $green;
 }
@@ -50,3 +57,32 @@ h3, .h3{
     cursor: auto;
 }
 
+/*
+*
+* @media
+*
+ */
+
+@media (min-width: 600px) {
+    h1, .h1{
+        font-size: 4rem;
+    }
+    h2, .h2{
+        font-size: 2rem;
+    }
+    h3, .h3{
+        font-size: 1.5rem;
+    }
+}
+
+@media (min-width: 960px) {
+    h1, .h1{
+        font-size: 5rem;
+    }
+    h2, .h2{
+        font-size: 3rem;
+    }
+    h3, .h3{
+        font-size: 2rem;
+    }
+}

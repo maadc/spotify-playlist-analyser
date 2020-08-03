@@ -1,12 +1,12 @@
 <template>
     <div class="column col-12 col-mx-auto">
 
-        <!-- todo optional PlaylistId / Spotify URI -->
+        <!-- todo support Playlist URL and Spotify URI -->
         <div class="container">
             <input class="form-input" id="playlist-input" placeholder="search for playlist name" type="text"
                    v-on:keyup.enter="onEnter">
-            <button id="send" type="submit" v-on:click="fetchPlaylists()"><img alt="start search"
-                                                                               src="../../img/arrow-right.svg" title="go!">
+            <button id="send" type="submit" v-on:click="fetchPlaylists()">
+                <img alt="start search" src="../../img/arrow-right.svg" title="go!">
             </button>
         </div>
 
@@ -14,8 +14,9 @@
             <div class="result columns mb-2" v-for="playlist of playlists">
                 <!-- todo if URl empty -->
                 <div class="col-sm-12 col-md-4 col-lg-4 col-xl-3 col-2"><img alt="Playlist title image"
-                                                                    v-bind:src="playlist.mainImageURL"></div>
-                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-7 col-8"><p><b>{{ playlist.name }}</b> <br> {{ playlist.owner }}
+                                                                             v-bind:src="playlist.mainImageURL"></div>
+                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-7 col-8"><p><b>{{ playlist.name }}</b> <br>
+                    {{ playlist.owner }}
                 </p></div>
                 <div class="col-sm-12 col-lg-3 col-2">
                     <form action="/playlist" class="text-center input-group" method="POST">
