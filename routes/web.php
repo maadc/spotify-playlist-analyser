@@ -15,5 +15,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@index')->name('start');
 
-Route::get('/playlist', 'HomeController@index');
+Route::get('/playlist', 'RedirectController@home');
 Route::post('/playlist', 'TrackController@trackAnalysis')->name('playlist.analyse');

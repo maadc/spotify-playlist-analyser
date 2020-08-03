@@ -15,5 +15,5 @@ use Illuminate\Support\Facades\Route;
  *
  */
 
-Route::get('/playlist', 'HomeController@index');
+Route::get('/playlist', 'RedirectController@home');
 Route::post('/playlist', 'PlaylistController@searchPlaylist')->name("searchPlaylist")->middleware('signed');
