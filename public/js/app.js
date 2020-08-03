@@ -1939,7 +1939,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1947,10 +1946,11 @@ __webpack_require__.r(__webpack_exports__);
       csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
     };
   },
+  props: ['url'],
+  created: function created() {
+    console.log(this.url);
+  },
   methods: {
-    onEnter: function onEnter() {
-      this.fetchPlaylists();
-    },
     fetchPlaylists: function fetchPlaylists() {
       var formInput = document.getElementById("playlist-input");
       var input = formInput.value;
@@ -1973,7 +1973,16 @@ __webpack_require__.r(__webpack_exports__);
     }(function (query) {
       var _this = this;
 
-      fetch("api/searchPlaylist/" + query).then(function (res) {
+      var requestOptions = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          query: String(query)
+        })
+      };
+      fetch(this.url, requestOptions).then(function (res) {
         return res.json();
       }).then(function (res) {
         _this.playlists = res;
@@ -37598,7 +37607,7 @@ var render = function() {
             ) {
               return null
             }
-            return _vm.onEnter($event)
+            return _vm.fetchPlaylists($event)
           }
         }
       }),

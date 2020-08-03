@@ -19,7 +19,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['localhost, http://schranz.io'],
+    'allowed_origins' => ['127.0.0.1:8000','http://schranz.io', 'https://schranz.io'],
 
     'allowed_origins_patterns' => [],
 

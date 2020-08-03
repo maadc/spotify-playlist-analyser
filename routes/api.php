@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +13,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-Route::get('/auth', 'AuthController@key');
-Route::get('/searchPlaylist/{q}', 'PlaylistController@searchPlaylist');
+Route::get('/playlist', 'HomeController@index');
+Route::post('/playlist', 'PlaylistController@searchPlaylist')->name("searchPlaylist")->middleware('signed');

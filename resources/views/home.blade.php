@@ -7,7 +7,7 @@
             <h2 class="text-center">How danceable are your playlists?</h2>
 
             {{--Vue-Component--}}
-            <playlist-search></playlist-search>
+            <playlist-search :url="'{{$fetchURL}}'"></playlist-search>
         </div>
     </div>
 

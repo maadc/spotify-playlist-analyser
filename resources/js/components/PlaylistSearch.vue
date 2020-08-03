@@ -1,10 +1,9 @@
 <template>
     <div class="column col-12 col-mx-auto">
-
         <!-- todo support Playlist URL and Spotify URI -->
         <div class="container">
             <input class="form-input" id="playlist-input" placeholder="search for playlist name" type="text"
-                   v-on:keyup.enter="onEnter">
+                   v-on:keyup.enter="fetchPlaylists">
             <button id="send" type="submit" v-on:click="fetchPlaylists()">
                 <img alt="start search" src="../../img/arrow-right.svg" title="go!">
             </button>
@@ -38,10 +37,11 @@ export default {
             csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
         }
     },
+    props : ['url'],
+    created() {
+        console.log(this.url)
+    },
     methods: {
-        onEnter() {
-            this.fetchPlaylists();
-        },
         fetchPlaylists() {
             let formInput = document.getElementById("playlist-input");
             const input = formInput.value;
@@ -54,7 +54,13 @@ export default {
 
         },
         fetch(query) {
-            fetch("api/searchPlaylist/" + query)
+            const requestOptions = {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ query: String(query) })
+            };
+
+            fetch(this.url, requestOptions)
                 .then(res => res.json())
                 .then(res => {
                     this.playlists = res;
@@ -64,7 +70,7 @@ export default {
                     console.log('error', error);
                     document.getElementById('result-container').className = 'container shown';
                     document.getElementById('result-container').innerHTML = "<h3>Sorry, no playlist found!</h3>";
-                });
+                })
         }
     }
 }
