@@ -1,4 +1,4 @@
-#Classify - How danceable is your playlist?
+# Classify - How danceable is your playlist?
 ## About Classify
 
 Classify is a web application to get insight in every public spotify playlist. It is for music enthusiasts who what consistent playlist of for DJ's who plan their set.   
