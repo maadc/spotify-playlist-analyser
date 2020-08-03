@@ -1939,6 +1939,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1947,9 +1960,7 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   props: ['url'],
-  created: function created() {
-    console.log(this.url);
-  },
+  //containing the signed fetchURL
   methods: {
     fetchPlaylists: function fetchPlaylists() {
       var formInput = document.getElementById("playlist-input");
@@ -37661,9 +37672,9 @@ var render = function() {
                 _vm._v(" "),
                 _c("br"),
                 _vm._v(
-                  "\n                " +
+                  "\n                    " +
                     _vm._s(playlist.owner) +
-                    "\n            "
+                    "\n                "
                 )
               ])
             ]
@@ -37683,7 +37694,7 @@ var render = function() {
                 }),
                 _vm._v(" "),
                 _c("input", {
-                  attrs: { name: "nachricht", type: "hidden" },
+                  attrs: { name: "playlist", type: "hidden" },
                   domProps: { value: JSON.stringify(playlist) }
                 }),
                 _vm._v(" "),
