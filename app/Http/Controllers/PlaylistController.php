@@ -4,6 +4,16 @@ namespace App\Http\Controllers;
 
 class PlaylistController extends Controller
 {
+    /*
+     * triggered: resources/js/components/PlaylistSearch.vue
+     *
+     * Takes the search-query from input field on the home-page
+     * and returns a limited amount of spotify-playlist in a
+     * readable format.
+     *
+     * todo: support alternativ queries -> Playlist-URL and URI
+     */
+
     public function searchPlaylist()
     {
         $query = request()->input("query");
@@ -17,15 +27,15 @@ class PlaylistController extends Controller
         );
         $context = stream_context_create($options);
         $result = json_decode(file_get_contents($url, false, $context));
-        if (is_object($result)) {
 
+        if (is_object($result)) {
             if (empty($result->playlists->items)) {
                 return response("no playlist found", 404);
             }
 
-            //Array containing all playlist results
+            //fill $playlistArray with only needed data about each playlist
             $playlistArray = [];
-            foreach ($result->playlists->items as $key =>$list){
+            foreach ($result->playlists->items as $key => $list) {
 
                 $playlistArray[$key] = array(
                     "spotifyID" => $list->id,

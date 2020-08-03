@@ -4,10 +4,24 @@ namespace App\Http\Controllers;
 
 class TrackController extends Controller
 {
+    /*
+     * triggered: when one playlist is chosen to analyse
+     *
+     * It is a POST-Request containing an playlist-object.
+     * Containing: spotifyID, name, owner, lastSearched, mainImageURL
+     *
+     * Returns an huge array containing every song of the playlist.
+     * Prepared to show on playlist.blade.php
+     *
+     * todo: save playlist in top-playlists.db
+     * todo: save track in top-tracks.db
+     * todo: duration in Minutes and Seconds
+     */
+
     public function trackAnalysis()
     {
-        $playlist = json_decode(request("nachricht"));
-        // todo save playlist in top-playlists.db
+        $playlist = json_decode(request("playlist"));
+
 
         $playlistID = $playlist->spotifyID;
         $token = AuthController::key()->content();
@@ -42,8 +56,6 @@ class TrackController extends Controller
 
             /*
              * Save all properties of this track in the trackArray containing all Tracks
-             * todo: save track in top-tracks.db
-             * todo: duration in Minutes and Seconds
              */
             array_push($trackArray, [
                 "id" => $track->track->id,

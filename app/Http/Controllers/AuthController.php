@@ -4,6 +4,19 @@ namespace App\Http\Controllers;
 
 class AuthController extends Controller
 {
+    /*
+     * triggered: PlaylistController, TrackController
+     *
+     * Returns an Spotify Access-Token which allows the other API-Requests to happen
+     *
+     * This function causes an weird error sometimes:
+     * failed to open stream: HTTP request failed! HTTP/1.0 400 Bad Request
+     *
+     * Solution (works sometimes):
+     * $ git reset --hard
+     * $ php artisan optimize
+     * $ php artisan config:clear
+     */
     public static function key()
     {
         $url = 'https://accounts.spotify.com/api/token';
