@@ -15,7 +15,7 @@
 
     </section>
     <section class="navbar-section">
-        <a href="" class="green btn btn-link">Statistics</a>
+        <a href="{{ route('statistics') }}" class="green btn btn-link">Statistics</a>
         <a href="" class="green btn btn-link">About</a>
     </section>
 </header>
