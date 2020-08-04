@@ -18,7 +18,7 @@ class CreateAccessTokensTable extends Migration
             $table->string("access_token");
             $table->dateTime('expires');
             $table->integer("uses")->default(1);
-            $table->timestamps();
+            $table->dateTime('created_at');
         });
     }
 

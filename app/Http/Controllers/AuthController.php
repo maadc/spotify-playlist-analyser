@@ -32,6 +32,9 @@ class AuthController extends Controller
         $key = DB::table("access_tokens")->first();
 
         if ($key === null) {
+            /*
+             * access_token is nonexistent -> generate a new key
+             */
             $newKey = json_decode(self::getKey()->content());
             DB::table('access_tokens')->insert(
                 [
@@ -47,11 +50,25 @@ class AuthController extends Controller
              * access_token is valid and not expired
              */
             DB::table("access_tokens")
-                ->where("access_token", $key->access_token)
+
                 ->update(['uses' => $key->uses + 1]);
             return $key->access_token;
         } else {
-            return "key not valid";
+            /*
+             * access_token is expired -> generate a new key
+             */
+            $newKey = json_decode(self::getKey()->content());
+            DB::table('access_tokens')
+                ->where("access_token", $key->access_token)
+                ->update(
+                [
+                    'access_token' => $newKey->access_token,
+                    'expires' => now()->addSeconds($newKey->expires_in),
+                    'uses' => 1,
+                    'created_at' => now()
+                ]
+            );
+            return $newKey->access_token;
         }
 
     }
