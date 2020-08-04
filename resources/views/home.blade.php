@@ -1,3 +1,7 @@
+<!--
+todo: when the page is longer opened than 5 -> notice the user to reload due security
+-->
+
 @extends('layout.master')
 
 @section('content')

@@ -41,7 +41,6 @@ class PlaylistController extends Controller
                     "spotifyID" => $list->id,
                     "name" => $list->name,
                     "owner" => $list->owner->display_name,
-                    "lastSearches" => date("d/m/y/h/m"),
                     "mainImageURL" => $list->images[0]->url);
             }
 

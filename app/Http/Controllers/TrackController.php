@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
+
 class TrackController extends Controller
 {
     /*
@@ -13,18 +15,19 @@ class TrackController extends Controller
      * Returns an huge array containing every song of the playlist.
      * Prepared to show on playlist.blade.php
      *
-     * todo: save playlist in top-playlists.db
-     * todo: save track in top-tracks.db
      * todo: duration in Minutes and Seconds
      */
 
     public function trackAnalysis()
     {
         $playlist = json_decode(request("playlist"));
+        $token = AuthController::key();
 
+        // Store the playlist data in the statistics db
+        self::safePlaylistStatistic($playlist);
 
         $playlistID = $playlist->spotifyID;
-        $token = AuthController::key();
+
 
         $url = 'https://api.spotify.com/v1/playlists/' . rawurlencode($playlistID) . '/tracks';
         $options = array(
@@ -114,5 +117,31 @@ class TrackController extends Controller
         );
         $context = stream_context_create($options);
         return json_decode(file_get_contents($url, false, $context));
+    }
+
+    public static function safePlaylistStatistic($playlist){
+        $existingStatistic = DB::table("top-playlists")
+            ->where("spotifyID", $playlist->spotifyID)
+            ->first();
+
+        if($existingStatistic === null){
+            DB::table("top-playlists")->insert([
+                "spotifyID" =>  $playlist->spotifyID,
+                "name" => $playlist->name,
+                "owner" => $playlist->owner,
+                "lastSearched" => now(),
+                "mainImageURL" => $playlist->mainImageURL
+            ]);
+        } else {
+           DB::table("top-playlists")
+                ->where("spotifyID", $playlist->spotifyID)
+               ->update([
+                   "lastSearched" => now(),
+                   "counter" => $existingStatistic->counter + 1
+
+               ]);
+        }
+
+
     }
 }
