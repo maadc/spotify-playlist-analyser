@@ -1,0 +1,63 @@
+#statistics-container {
+    min-height: calc(100vh - 76px - 100px);
+
+    h1 {
+        margin-bottom: 0;
+    }
+
+
+    #statistics-page {
+        dd {
+            margin: 0;
+            border-bottom: 2px solid white;
+        }
+
+        img {
+            width: 65px;
+            margin-top: 5px;
+            -webkit-box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.75);
+            -moz-box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.75);
+            box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.75)
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            height: 82px;
+            margin: 0;
+            background-color: unset;
+            transition-duration: 0.3s;
+            border: none;
+
+            p {
+                transition-duration: 0.3s;
+            }
+        }
+
+        button:hover[type="submit"] {
+            background-color: white;
+
+            p {
+                color: $black;
+            }
+        }
+
+        dl#top {
+            div.columns > div.column:first-of-type {
+                margin-top: 1rem;
+
+                span {
+                    font-size: 2rem;
+                }
+            }
+
+            div.columns div.column:last-of-type {
+                margin-top: 1rem;
+
+                span {
+                    font-size: 1rem;
+
+                }
+            }
+        }
+    }
+}

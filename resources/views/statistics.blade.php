@@ -1,13 +1,13 @@
 @extends('layout.master')
 
 @section('content')
-    <div id="home-container" class="container-fluid">
-        <div class="column col-sm-12 col-md-8 col-6">
-            <h1 class="h2">Statistics</h1>
-            <h2 class="h3">What did Classify users search?</h2>
+    <div id="statistics-container" class="container-fluid">
+        <div class="column col-sm-12 col-md-8 col-6 col-mx-auto">
+            <h1 class="text-center">Statistics</h1>
+            <p class="text-center">Which playlist gets analysed the most?</p>
 
             {{--Vue-Component--}}
-            <statistics></statistics>
+            <statistics :list="{{$playlistArray}}" :top="{{$top10Array}}"></statistics>
         </div>
     </div>
 

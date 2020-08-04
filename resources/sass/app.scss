@@ -10,12 +10,18 @@
 
 //Main Settings
 body{
+    box-sizing: border-box;
     background-color: $black;
 }
 h1, .h1,
 h2, .h2,
 h3, .h3{
     color: $green;
+}
+
+p,
+span{
+    color: white;
 }
 
 h2, .h2{
@@ -34,7 +40,9 @@ h3, .h3{
 * Main
 *
 */
+main {
 
+}
 
 /*
 *

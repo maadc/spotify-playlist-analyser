@@ -2,7 +2,9 @@
     <div class="column col-12 col-mx-auto">
 
         <div class="container">
-            <input class="form-input" id="playlist-input" placeholder="search for playlist name" type="text"
+            <input class="form-input"
+                   id="playlist-input"
+                   placeholder="search for playlist name" type="text"
                    v-on:keyup.enter="fetchPlaylists">
             <button id="send" type="submit" v-on:click="fetchPlaylists()">
                 <img alt="start search" src="../../img/arrow-right.svg" title="go!">
