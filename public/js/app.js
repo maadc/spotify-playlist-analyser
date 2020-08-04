@@ -1952,6 +1952,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1997,11 +2000,12 @@ __webpack_require__.r(__webpack_exports__);
         return res.json();
       }).then(function (res) {
         _this.playlists = res;
+        document.getElementById('fail-container').className = 'container hidden';
         document.getElementById('result-container').className = 'container shown';
       })["catch"](function (error) {
         console.log('error', error);
-        document.getElementById('result-container').className = 'container shown';
-        document.getElementById('result-container').innerHTML = "<h3>Sorry, no playlist found!</h3>";
+        document.getElementById('result-container').className = 'container hidden';
+        document.getElementById('fail-container').className = 'container shown';
       });
     })
   }
@@ -37708,10 +37712,23 @@ var render = function() {
         ])
       }),
       0
-    )
+    ),
+    _vm._v(" "),
+    _vm._m(0)
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "container hidden", attrs: { id: "fail-container" } },
+      [_c("h3", [_vm._v("Sorry, no playlist found!")])]
+    )
+  }
+]
 render._withStripped = true
 
 

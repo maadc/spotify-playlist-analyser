@@ -57,10 +57,10 @@ button#send:focus {
     }
 }
 
-#result-container.hidden {
+.hidden {
     display: none;
 }
 
-#result-container.shown {
+.shown {
     display: block;
 }

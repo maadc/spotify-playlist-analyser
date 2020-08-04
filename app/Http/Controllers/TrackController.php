@@ -24,7 +24,7 @@ class TrackController extends Controller
 
 
         $playlistID = $playlist->spotifyID;
-        $token = AuthController::key()->content();
+        $token = AuthController::key();
 
         $url = 'https://api.spotify.com/v1/playlists/' . rawurlencode($playlistID) . '/tracks';
         $options = array(

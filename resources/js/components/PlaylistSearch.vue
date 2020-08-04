@@ -39,6 +39,9 @@
                 </div>
             </div>
         </div>
+        <div class="container hidden" id="fail-container">
+            <h3>Sorry, no playlist found!</h3>
+        </div>
     </div>
 </template>
 
@@ -72,12 +75,13 @@ export default {
                 .then(res => res.json())
                 .then(res => {
                     this.playlists = res;
+                    document.getElementById('fail-container').className = 'container hidden';
                     document.getElementById('result-container').className = 'container shown'
                 })
                 .catch(error => {
                     console.log('error', error);
-                    document.getElementById('result-container').className = 'container shown';
-                    document.getElementById('result-container').innerHTML = "<h3>Sorry, no playlist found!</h3>";
+                    document.getElementById('result-container').className = 'container hidden'
+                    document.getElementById('fail-container').className = 'container shown';
                 })
         }
     }

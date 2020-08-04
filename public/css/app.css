@@ -56,11 +56,11 @@ button#send:focus {
   padding: 0;
 }
 
-#result-container.hidden {
+.hidden {
   display: none;
 }
 
-#result-container.shown {
+.shown {
   display: block;
 }
 
