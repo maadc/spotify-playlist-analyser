@@ -56,6 +56,13 @@ button#send:focus {
   padding: 0;
 }
 
+#describtion-container p {
+  margin-top: 0.83rem;
+  font-size: 1rem;
+  text-align: justify;
+  color: white;
+}
+
 .hidden {
   display: none;
 }

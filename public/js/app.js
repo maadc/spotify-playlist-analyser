@@ -1955,6 +1955,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -37714,7 +37719,9 @@ var render = function() {
       0
     ),
     _vm._v(" "),
-    _vm._m(0)
+    _vm._m(0),
+    _vm._v(" "),
+    _vm._m(1)
   ])
 }
 var staticRenderFns = [
@@ -37724,8 +37731,33 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c(
       "div",
-      { staticClass: "container hidden", attrs: { id: "fail-container" } },
+      { staticClass: "container hidden mt-2", attrs: { id: "fail-container" } },
       [_c("h3", [_vm._v("Sorry, no playlist found!")])]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "container shown mt-2",
+        attrs: { id: "describtion-container" }
+      },
+      [
+        _c("p", [
+          _c("b", [
+            _vm._v(
+              "Classify is here for you to gain a better insight into your spotify playlist of choice."
+            )
+          ]),
+          _c("br"),
+          _vm._v(
+            '\n        Type the playlist name in the input field, press the button or hit enter. Classify searches\n        through Spotify and returns up to 5 playlists which match to your typed name. The last step: Just click "analyse" to get the full insight in your playlist! Have fun!'
+          )
+        ])
+      ]
     )
   }
 ]

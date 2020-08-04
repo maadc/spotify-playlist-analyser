@@ -39,8 +39,13 @@
                 </div>
             </div>
         </div>
-        <div class="container hidden" id="fail-container">
+        <div class="container hidden mt-2" id="fail-container">
             <h3>Sorry, no playlist found!</h3>
+        </div>
+        <div class="container shown mt-2" id="describtion-container">
+            <p><b>Classify is here for you to gain a better insight into your spotify playlist of choice.</b><br>
+            Type the playlist name in the input field, press the button or hit enter. Classify searches
+            through Spotify and returns up to 5 playlists which match to your typed name. The last step: Just click "analyse" to get the full insight in your playlist! Have fun!</p>
         </div>
     </div>
 </template>
