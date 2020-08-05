@@ -24,6 +24,8 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
-        "spectre.css": "^0.5.9"
+        "spectre.css": "^0.5.9",
+        "tabulator-tables": "^4.7.2",
+        "vue-tabulator": "^1.2.2"
     }
 }

@@ -56,7 +56,7 @@
                 </a>
             </span>
             <span id="copyright">
-                "class="green">Copyright: 2020 - <?php echo date("Y");?>
+               Copyright: 2020 - <?php echo date("Y");?>
             </span>
         </section>
     </div>

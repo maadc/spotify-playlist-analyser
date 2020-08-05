@@ -21,6 +21,7 @@ window.Vue = require('vue');
 
 Vue.component('playlist-search', require('./components/PlaylistSearch.vue').default);
 Vue.component('statistics', require('./components/Statistics.vue').default);
+Vue.component('playlist', require('./components/Playlist.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -29,5 +30,5 @@ Vue.component('statistics', require('./components/Statistics.vue').default);
  */
 
 const app = new Vue({
-    el: '#app'
+    "el": '#app'
 });

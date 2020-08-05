@@ -71,9 +71,6 @@ export default {
                 .getAttribute('content')
         }
     },
-    created() {
-        console.log(this.list)
-    },
     props: ['list', 'top'], //containing the last searchedPlaylists
     methods: {}
 }
