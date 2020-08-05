@@ -13,6 +13,7 @@ class StatisticController extends Controller
 
         $lastSearchedPlaylists = DB::table("top-playlists")
             ->orderBy("lastSearched", "desc")
+            ->limit(10)
             ->get();
 
         foreach ($lastSearchedPlaylists as $playlist) {

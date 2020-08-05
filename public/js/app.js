@@ -2092,20 +2092,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -37894,7 +37880,7 @@ var render = function() {
         _c(
           "div",
           {
-            staticClass: "column col-sm-12 col-6",
+            staticClass: "column col-md-12 col-6",
             attrs: { id: "last-searched" }
           },
           [
@@ -37934,30 +37920,31 @@ var render = function() {
                               _c("img", {
                                 attrs: {
                                   alt: "Spotify Playlist Image",
-                                  title: "Main image of { playlist.name }}",
+                                  title:
+                                    "Main playlist image of" + playlist.name,
                                   src: playlist.mainImageURL
                                 }
                               })
                             ]),
                             _vm._v(" "),
-                            _c("div", { staticClass: "column col-auto" }, [
-                              _c("p", { staticClass: "text-left" }, [
-                                _c("b", [
-                                  _vm._v(
-                                    "\n                                            " +
-                                      _vm._s(playlist.name) +
-                                      "\n                                        "
-                                  )
-                                ]),
+                            _c(
+                              "div",
+                              { staticClass: "column col-8 text-left" },
+                              [
+                                _c("p", {
+                                  staticClass: " text-bold",
+                                  domProps: {
+                                    textContent: _vm._s(playlist.name)
+                                  }
+                                }),
                                 _vm._v(" "),
-                                _c("br"),
-                                _vm._v(
-                                  "\n                                        " +
-                                    _vm._s(playlist.owner) +
-                                    "\n                                    "
-                                )
-                              ])
-                            ])
+                                _c("p", {
+                                  domProps: {
+                                    textContent: _vm._s(playlist.owner)
+                                  }
+                                })
+                              ]
+                            )
                           ])
                         ]
                       )
@@ -37973,7 +37960,7 @@ var render = function() {
         _c(
           "div",
           {
-            staticClass: "column col-sm-12 col-6",
+            staticClass: "column col-md-12 col-6",
             attrs: { id: "most-searched" }
           },
           [
@@ -38029,38 +38016,35 @@ var render = function() {
                               })
                             ]),
                             _vm._v(" "),
-                            _c("div", { staticClass: "column col-auto" }, [
-                              _c("p", { staticClass: "text-left" }, [
-                                _c("b", [
-                                  _vm._v(
-                                    "\n                                            " +
-                                      _vm._s(playlist.name) +
-                                      "\n                                        "
-                                  )
-                                ]),
+                            _c(
+                              "div",
+                              { staticClass: "column col-6 text-left" },
+                              [
+                                _c("p", {
+                                  staticClass: " text-bold",
+                                  domProps: {
+                                    textContent: _vm._s(playlist.name)
+                                  }
+                                }),
                                 _vm._v(" "),
-                                _c("br"),
-                                _vm._v(
-                                  "\n                                        " +
-                                    _vm._s(playlist.owner) +
-                                    "\n                                    "
-                                )
-                              ])
-                            ]),
+                                _c("p", {
+                                  domProps: {
+                                    textContent: _vm._s(playlist.owner)
+                                  }
+                                })
+                              ]
+                            ),
                             _vm._v(" "),
                             _c(
                               "div",
-                              { staticClass: "column col-auto col-ml-auto" },
+                              { staticClass: "column col-1 col-ml-auto" },
                               [
-                                _c("p", { staticClass: "text-left" }, [
-                                  _c("b", [
-                                    _vm._v(
-                                      "\n                                            " +
-                                        _vm._s(playlist.counter) +
-                                        "\n                                        "
-                                    )
-                                  ])
-                                ])
+                                _c("p", {
+                                  staticClass: " text-bold",
+                                  domProps: {
+                                    textContent: _vm._s(playlist.counter)
+                                  }
+                                })
                               ]
                             )
                           ])
