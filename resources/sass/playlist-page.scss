@@ -1,16 +1,20 @@
-#playlist-container{
-    .tabulator-tableHolder {
-        .tabulator-cell {
-            color: white;
-            background-color: unset;
-            transition-duration: .3s;
-        }
+#playlist-container {
+    .tabulator {
+        min-height: 400px;
 
-        .tabulator-row:hover {
-            background-color: white;
-
+        .tabulator-tableHolder {
             .tabulator-cell {
-                color: $black;
+                color: white;
+                background-color: unset;
+                transition-duration: .3s;
+            }
+
+            .tabulator-row:hover {
+                background-color: white;
+
+                .tabulator-cell {
+                    color: $black;
+                }
             }
         }
     }

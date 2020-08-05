@@ -16,7 +16,7 @@ export default {
             options: {
                 height:"calc(100vh - 1.5rem - 76px - 82px - 48px - 48px)",
                 width:"100%",
-                layout: "fitColumns",
+                layout: "fitData",
                 frozen: true,
                 initialSort: [             //set the initial sort order of the data
                     {column: "name", dir: "asc"},
@@ -24,10 +24,10 @@ export default {
                 columns: [
                     {title: "Name", field: "name", width: 230},
                     {title: "Artist", field: "artists", width: 230},
-                    {title: "Duration", field: "duration", width: 100},
-                    {title: "Popularity", field: "popularity", topCalc:"avg", width: 100},
-                    {title: "Key", field: "audioFeatures.key", topCalc:"avg", width: 100},
-                    {title: "BPM", field: "audioFeatures.tempo", topCalc:"avg", width: 100},
+                    {title: "Duration", field: "duration", },
+                    {title: "Popularity", field: "popularity", topCalc:"avg", },
+                    {title: "Key", field: "audioFeatures.key", topCalc:"avg", },
+                    {title: "BPM", field: "audioFeatures.tempo", topCalc:"avg", },
                     {
                         title: "Audio Features",
                         columns: [
