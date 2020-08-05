@@ -1,8 +1,5 @@
 #home-container {
-    margin-top: 3rem;
-    min-height: calc(100vh - 3rem - 76px - 100px);
-
-    .form-input {
+        .form-input {
         height: 3rem;
         border-radius: 2rem;
         font-weight: bold;
@@ -15,8 +12,8 @@
 
     button#send {
         position: absolute;
-        top: 10%;
-        right: 5%;
+        top: 5px;
+        right: 10px;
         background: unset;
         border: none;
         padding: 0;
@@ -49,11 +46,12 @@ button#send:focus {
         height: 100px;
     }
 
-    input[type="submit"] {
-        background-color: $black;
-        border: none;
-        color: $green;
-        padding: 0;
+    form {
+        width: 100%;
+
+        button {
+
+        }
     }
 }
 

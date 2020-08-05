@@ -1962,6 +1962,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -37700,7 +37705,9 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "column col-12 col-mx-auto" }, [
+  return _c("div", { staticClass: "column col-xl-12 col-8 col-mx-auto" }, [
+    _vm._m(0),
+    _vm._v(" "),
     _c("div", { staticClass: "container" }, [
       _c("input", {
         staticClass: "form-input",
@@ -37747,84 +37754,85 @@ var render = function() {
     _c(
       "div",
       { staticClass: "container hidden", attrs: { id: "result-container" } },
-      _vm._l(_vm.playlists, function(playlist) {
-        return _c("div", { staticClass: "result columns mb-2" }, [
-          _c(
-            "div",
-            { staticClass: "col-sm-12 col-md-4 col-lg-4 col-xl-3 col-2" },
-            [
-              _c("img", {
-                attrs: {
-                  alt: "Playlist title image",
-                  src: playlist.mainImageURL
-                }
-              })
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "col-sm-12 col-md-6 col-lg-6 col-xl-7 col-8" },
-            [
-              _c("p", [
-                _c("b", [_vm._v(_vm._s(playlist.name))]),
-                _vm._v(" "),
-                _c("br"),
-                _vm._v(
-                  "\n                    " +
-                    _vm._s(playlist.owner) +
-                    "\n                "
-                )
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-sm-12 col-lg-3 col-2" }, [
-            _c(
-              "form",
-              {
-                staticClass: "text-center input-group",
-                attrs: { action: "/playlist", method: "POST" }
-              },
-              [
-                _c("input", {
-                  attrs: { name: "_token", type: "hidden" },
-                  domProps: { value: _vm.csrf }
-                }),
-                _vm._v(" "),
-                _c("input", {
-                  attrs: { name: "playlist", type: "hidden" },
-                  domProps: { value: JSON.stringify(playlist) }
-                }),
-                _vm._v(" "),
-                _c("input", {
-                  staticClass: "input-group-addon",
-                  attrs: { type: "submit", value: "analyse" }
-                })
-              ]
-            )
-          ])
-        ])
-      }),
-      0
+      [
+        _c(
+          "dl",
+          _vm._l(_vm.playlists, function(playlist) {
+            return _c("dd", { staticClass: "result columns mb-2" }, [
+              _c(
+                "form",
+                {
+                  staticClass: "text-center input-group",
+                  attrs: { action: "/playlist", method: "POST" }
+                },
+                [
+                  _c("input", {
+                    attrs: { name: "_token", type: "hidden" },
+                    domProps: { value: _vm.csrf }
+                  }),
+                  _vm._v(" "),
+                  _c("input", {
+                    attrs: { name: "playlist", type: "hidden" },
+                    domProps: { value: JSON.stringify(playlist) }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "c-hand list",
+                      attrs: { type: "submit", value: "analyse" }
+                    },
+                    [
+                      _c("div", { staticClass: "columns" }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "column col-xs-12 col-xs-mx-auto col-auto"
+                          },
+                          [
+                            _c("img", {
+                              attrs: {
+                                alt: "Playlist title image",
+                                src: playlist.mainImageURL
+                              }
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "column col-xs-12 col-xs-mx-auto col-auto text-left"
+                          },
+                          [
+                            _c("p", {
+                              staticClass: " text-bold",
+                              domProps: { textContent: _vm._s(playlist.name) }
+                            }),
+                            _vm._v(" "),
+                            _c("p", {
+                              domProps: { textContent: _vm._s(playlist.owner) }
+                            })
+                          ]
+                        )
+                      ])
+                    ]
+                  )
+                ]
+              )
+            ])
+          }),
+          0
+        )
+      ]
     ),
-    _vm._v(" "),
-    _vm._m(0),
     _vm._v(" "),
     _vm._m(1)
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "container hidden mt-2", attrs: { id: "fail-container" } },
-      [_c("h3", [_vm._v("Sorry, no playlist found!")])]
-    )
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -37839,15 +37847,25 @@ var staticRenderFns = [
         _c("p", [
           _c("b", [
             _vm._v(
-              "Classify is here for you to gain a better insight into your spotify playlist of choice."
+              "Classify - the spotify playlist analyser - is here for you!"
             )
           ]),
           _c("br"),
           _vm._v(
-            '\n        Type the playlist name in the input field, press the button or hit enter. Classify searches\n        through Spotify and returns up to 5 playlists which match to your typed name. The last step: Just click "analyse" to get the full insight in your playlist! Have fun!'
+            '\n            Gain a better insight into your spotify playlist of choice.\n            Type the playlist name in the input field, press the button or hit enter. Classify searches\n            through Spotify and returns up to 5 playlists which match to your typed name. The last step: Just click\n            "analyse" to get the full insight in your playlist! Have fun!'
           )
         ])
       ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "container hidden mt-2", attrs: { id: "fail-container" } },
+      [_c("h3", [_vm._v("Sorry, no playlist found!")])]
     )
   }
 ]
@@ -37911,7 +37929,7 @@ var render = function() {
                       _c(
                         "button",
                         {
-                          staticClass: "input-group-addon c-hand",
+                          staticClass: "list c-hand",
                           attrs: { type: "submit", value: "analyse" }
                         },
                         [
@@ -37991,7 +38009,7 @@ var render = function() {
                       _c(
                         "button",
                         {
-                          staticClass: "input-group-addon c-hand",
+                          staticClass: "c-hand list",
                           attrs: { type: "submit", value: "analyse" }
                         },
                         [

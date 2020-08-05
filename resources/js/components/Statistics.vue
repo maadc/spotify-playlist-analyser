@@ -8,7 +8,7 @@
                         <form action="/playlist" class="text-center input-group" method="POST">
                             <input name="_token" type="hidden" v-bind:value="csrf">
                             <input name="playlist" type="hidden" v-bind:value=" JSON.stringify(playlist)">
-                            <button class="input-group-addon c-hand" type="submit" value="analyse">
+                            <button class="list c-hand" type="submit" value="analyse">
                                 <div class="columns">
                                     <div class="column col-auto">
                                         <img alt="Spotify Playlist Image"
@@ -32,7 +32,7 @@
                         <form action="/playlist" class="text-center input-group" method="POST">
                             <input name="_token" type="hidden" v-bind:value="csrf">
                             <input name="playlist" type="hidden" v-bind:value=" JSON.stringify(playlist)">
-                            <button class="input-group-addon c-hand" type="submit" value="analyse">
+                            <button class="c-hand list" type="submit" value="analyse">
                                 <div class="columns">
                                     <div class="column col-auto">
                                         <span>

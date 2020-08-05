@@ -1,10 +1,9 @@
 @extends('layout.master')
 
 @section('content')
-    <div id="playlist-container">
-        <div class="container">
-            <h1> {{$playlist->name}} by {{$playlist->owner}} </h1>
-        </div>
+    <div id="playlist-container" class="container">
+            <h1 class="h3"> {{$playlist->name}}</h1>
+        <p>by {{$playlist->owner}}</p>
         <div class="table-container">
             <table class="track-list">
                 <thead>
