@@ -88,22 +88,26 @@ class TrackController extends Controller
 
         //assign the audio-features to every track
         foreach ($trackArray as $key => $track) {
-            $trackAudioFeatures =
-                [
-                    "key" => $audioFeatures->audio_features[$key]->key,
-                    "acousticness" => $audioFeatures->audio_features[$key]->acousticness,
-                    "danceability" => $audioFeatures->audio_features[$key]->danceability,
-                    "energy" => $audioFeatures->audio_features[$key]->energy,
-                    "instrumentalness" => $audioFeatures->audio_features[$key]->instrumentalness,
-                    "liveness" => $audioFeatures->audio_features[$key]->liveness,
-                    "loudness" => $audioFeatures->audio_features[$key]->loudness,
-                    "speechiness" => $audioFeatures->audio_features[$key]->speechiness,
-                    "valence" => $audioFeatures->audio_features[$key]->valence,
-                    "tempo" => $audioFeatures->audio_features[$key]->tempo,
-                ];
-            $trackArray[$key]["audioFeatures"] = $trackAudioFeatures;
+            if ($audioFeatures->audio_features[$key] === null) {
+                $trackArray[$key]["audioFeatures"] = [];
+            } else {
+                $trackAudioFeatures =
+                    [
+                        "key" => $audioFeatures->audio_features[$key]->key,
+                        "acousticness" => $audioFeatures->audio_features[$key]->acousticness,
+                        "danceability" => $audioFeatures->audio_features[$key]->danceability,
+                        "energy" => $audioFeatures->audio_features[$key]->energy,
+                        "instrumentalness" => $audioFeatures->audio_features[$key]->instrumentalness,
+                        "liveness" => $audioFeatures->audio_features[$key]->liveness,
+                        "loudness" => $audioFeatures->audio_features[$key]->loudness,
+                        "speechiness" => $audioFeatures->audio_features[$key]->speechiness,
+                        "valence" => $audioFeatures->audio_features[$key]->valence,
+                        "tempo" => $audioFeatures->audio_features[$key]->tempo,
+                    ];
+                $trackArray[$key]["audioFeatures"] = $trackAudioFeatures;
+            }
         }
-        return view('playlist', ["trackArray" => json_encode($trackArray), "playlist" => $playlist]);
+            return view('playlist', ["trackArray" => json_encode($trackArray), "playlist" => $playlist]);
     }
 
     public static function getAudioFeatures($trackIDString, $token)
