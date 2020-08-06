@@ -52,7 +52,7 @@
         <section class="navbar-section">
             <span id="social-links">
                 <a target="_blank" href="https://github.com/maadc/classify">
-                    <img alt="github icon" src="../../img/github.svg" title="link to github">
+                    <img alt="github icon" src="../../images/github.svg" title="link to github">
                 </a>
             </span>
             <span id="copyright">
