@@ -7,7 +7,6 @@
             <ul class="menu form-group">
                 <div class="switches" v-for="(column, index) of this.options.columns">
                     <label class="form-switch">
-
                         <input type="checkbox"
                                v-bind:checked="column.visible"
                                v-bind:id="[index]"
@@ -53,7 +52,7 @@ export default {
                 ],
                 columns: [
                     {
-                    field: "url", sorter:"none",
+                    title:"Play",field: "url",  headerSort:false, visible: true,
                         formatter: (cell) => {
                             return "<a href='" + cell.getValue() + "' target='_blank'>" +
                                 "<img src='/images/play.svg'></a>";
