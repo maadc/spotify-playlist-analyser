@@ -58,7 +58,6 @@ export default {
                                 "<img src='/images/play.svg'></a>";
                         }
                     },
-                    {title: "Name", field: "name", width: 150, visible: true,},
                     {title: "Name", field: "name", width: 230, visible: true,},
                     {title: "Artist", field: "artists", visible: true, width: 230},
                     {title: "Duration", field: "duration", visible: true},
