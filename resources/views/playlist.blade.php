@@ -2,6 +2,7 @@
 
 <!--
 todo: share button with signed URL
+todo: notification when file in playlist is local
 -->
 
 @section('content')
