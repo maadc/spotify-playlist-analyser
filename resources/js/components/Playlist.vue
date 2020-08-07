@@ -2,7 +2,7 @@
     <div class="mt-2">
         <div class="dropdown">
             <a class="dropdown-toggle" href="#" tabindex="0">
-                <img src="../../img/eye.svg" title="show/hide columns" alt="show/hide columns">
+                <img alt="show/hide columns" src="../../img/eye.svg" title="show/hide columns">
             </a>
             <ul class="menu form-group">
                 <div class="switches" v-for="(column, index) of this.options.columns">
@@ -42,6 +42,7 @@ export default {
     },
     data() {
         return {
+
             options: {
                 height: "calc(100vh - 1.5rem - 76px - 82px - 48px - 48px)",
                 width: "100%",
@@ -51,7 +52,15 @@ export default {
                     {column: "name", dir: "asc"},
                 ],
                 columns: [
-                    {title: "Name", field: "name", visible: true, width: 230},
+                    {
+                    field: "url", sorter:"none",
+                        formatter: (cell) => {
+                            return "<a href='" + cell.getValue() + "' target='_blank'>" +
+                                "<img src='/images/play.svg'></a>";
+                        }
+                    },
+                    {title: "Name", field: "name", width: 150, visible: true,},
+                    {title: "Name", field: "name", width: 230, visible: true,},
                     {title: "Artist", field: "artists", visible: true, width: 230},
                     {title: "Duration", field: "duration", visible: true},
                     {title: "Popularity", field: "popularity", visible: true, topCalc: "avg"},
@@ -85,7 +94,7 @@ export default {
     },
     methods: {
         hide(index, indexSecond) {
-            if(indexSecond === undefined){
+            if (indexSecond === undefined) {
 
                 const checked = document.getElementById(index).checked;
 
@@ -97,7 +106,7 @@ export default {
                 }
                 this.options.columns[index].visible = checked;
             } else {
-                const checked = document.getElementById('['+ index +']'+'.'+'[' + indexSecond + ']').checked;
+                const checked = document.getElementById('[' + index + ']' + '.' + '[' + indexSecond + ']').checked;
                 this.options.columns[index].columns[indexSecond].visible = checked;
             }
         }

@@ -137,10 +137,16 @@ button.list[type="submit"] {
         margin: 0;
         white-space: normal;
     }
+    img {
+        margin-top: 5px;
+        -webkit-box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.75);
+        box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.75)
+    }
 }
 
 button.list:hover[type="submit"] {
-    background-color: white;
+    background-color: darkgray;
 
     p {
         color: $black;

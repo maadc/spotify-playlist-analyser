@@ -68,8 +68,11 @@
             }
 
             .tabulator-row:hover {
-                background-color: white;
+                background-color: darkgray;
 
+                .tabulator-cell {
+                    color: $black;
+                }
                 .tabulator-cell {
                     color: $black;
                 }

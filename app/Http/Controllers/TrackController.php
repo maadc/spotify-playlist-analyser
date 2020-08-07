@@ -66,6 +66,7 @@ class TrackController extends Controller
                 "artists" => $artists,
                 "duration" => $track->track->duration_ms / 1000, //ms -> s
                 "popularity" => $track->track->popularity,
+                "url" => $track->track->external_urls->spotify,
                 "audioFeatures" => []
             ]);
         }
