@@ -41,15 +41,12 @@ export default {
     },
     data() {
         return {
-
             options: {
                 height: "calc(100vh - 1.5rem - 76px - 82px - 48px - 48px)",
                 width: "100%",
                 layout: "fitData",
                 frozen: true,
-                initialSort: [             //set the initial sort order of the data
-                    {column: "name", dir: "asc"},
-                ],
+                initialSort: [{column: "name", dir: "asc"}],
                 columns: [
                     {
                     title:"Play",field: "url",  headerSort:false, visible: true,
@@ -94,6 +91,7 @@ export default {
         hide(index, indexSecond) {
             if (indexSecond === undefined) {
 
+                // todo: Bug with hidden playbutton + refactoring to column.toggle()
                 const checked = document.getElementById(index).checked;
 
                 if (this.options.columns[index].columns !== undefined) {

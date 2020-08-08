@@ -16,6 +16,7 @@ class TrackController extends Controller
      * Prepared to show on playlist.blade.php
      *
      * todo: duration in Minutes and Seconds
+     * todo: more than 100 songs
      */
 
     public function trackAnalysis()
@@ -26,28 +27,15 @@ class TrackController extends Controller
         // Store the playlist data in the statistics db
         self::safePlaylistStatistic($playlist);
 
-        $playlistID = $playlist->spotifyID;
-
-
-        $url = 'https://api.spotify.com/v1/playlists/' . rawurlencode($playlistID) . '/tracks';
-        $options = array(
-            'http' => array(
-                'method' => 'GET',
-                'header' => 'Authorization: Bearer ' . $token
-            )
-        );
-        $context = stream_context_create($options);
-        $result = json_decode(file_get_contents($url, false, $context));
-
         //Array containing all Tracks
         $trackArray = [];
 
         /*
         * Get all the Tracks of the Playlist
         */
-        foreach ($result->items as $track) {
+        foreach (self::getTracks($playlist->spotifyID, $token)->items as $track) {
 
-            //figure out if there are more than one artist
+            //figure out if there are more than one artist for this track
             $artists = "";
             foreach ($track->track->artists as $key => $artist) {
                 if ($key === 0) {
@@ -74,7 +62,7 @@ class TrackController extends Controller
         /*
          * Get Audiofeatures and also save them in the Array
          */
-        //generate the URL with all trackIDs
+        //generate the needed URL with all trackIDs for the next API call
         $trackIDString = "";
         foreach ($trackArray as $key => $track) {
             if ($key === 0) {
@@ -108,7 +96,48 @@ class TrackController extends Controller
                 $trackArray[$key]["audioFeatures"] = $trackAudioFeatures;
             }
         }
-            return view('playlist', ["trackArray" => json_encode($trackArray), "playlist" => $playlist]);
+        return view('playlist',
+            ["trackArray" => json_encode($trackArray), "playlist" => $playlist]);
+    }
+
+    public static function safePlaylistStatistic($playlist)
+    {
+        $existingStatistic = DB::table("top-playlists")
+            ->where("spotifyID", $playlist->spotifyID)
+            ->first();
+
+        if ($existingStatistic === null) {
+            DB::table("top-playlists")->insert([
+                "spotifyID" => $playlist->spotifyID,
+                "name" => $playlist->name,
+                "owner" => $playlist->owner,
+                "lastSearched" => now(),
+                "mainImageURL" => $playlist->mainImageURL
+            ]);
+        } else {
+            DB::table("top-playlists")
+                ->where("spotifyID", $playlist->spotifyID)
+                ->update([
+                    "lastSearched" => now(),
+                    "counter" => $existingStatistic->counter + 1
+
+                ]);
+        }
+
+
+    }
+
+    public static function getTracks($playlistID, $token)
+    {
+        $url = 'https://api.spotify.com/v1/playlists/' . rawurlencode($playlistID) . '/tracks';
+        $options = array(
+            'http' => array(
+                'method' => 'GET',
+                'header' => 'Authorization: Bearer ' . $token
+            )
+        );
+        $context = stream_context_create($options);
+        return json_decode(file_get_contents($url, false, $context));
     }
 
     public static function getAudioFeatures($trackIDString, $token)
@@ -122,31 +151,5 @@ class TrackController extends Controller
         );
         $context = stream_context_create($options);
         return json_decode(file_get_contents($url, false, $context));
-    }
-
-    public static function safePlaylistStatistic($playlist){
-        $existingStatistic = DB::table("top-playlists")
-            ->where("spotifyID", $playlist->spotifyID)
-            ->first();
-
-        if($existingStatistic === null){
-            DB::table("top-playlists")->insert([
-                "spotifyID" =>  $playlist->spotifyID,
-                "name" => $playlist->name,
-                "owner" => $playlist->owner,
-                "lastSearched" => now(),
-                "mainImageURL" => $playlist->mainImageURL
-            ]);
-        } else {
-           DB::table("top-playlists")
-                ->where("spotifyID", $playlist->spotifyID)
-               ->update([
-                   "lastSearched" => now(),
-                   "counter" => $existingStatistic->counter + 1
-
-               ]);
-        }
-
-
     }
 }

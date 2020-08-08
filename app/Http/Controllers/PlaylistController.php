@@ -15,21 +15,6 @@ class PlaylistController extends Controller
      */
 
 
-    public static function searchID($id)
-    {
-        $url = 'https://api.spotify.com/v1/playlists/' . $id;
-        $token = AuthController::key();
-        $options = array(
-            'http' => array(
-                'method' => 'GET',
-                'header' => 'Authorization: Bearer ' . $token
-            )
-        );
-        $context = stream_context_create($options);
-        return json_decode(file_get_contents($url, false, $context));
-
-    }
-
     public function index()
     {
         /*
@@ -68,6 +53,21 @@ class PlaylistController extends Controller
                 return response(self::fillPlaylistArray($result->playlists->items), 200);
             }
         }
+    }
+
+    public static function searchID($id)
+    {
+        $url = 'https://api.spotify.com/v1/playlists/' . $id;
+        $token = AuthController::key();
+        $options = array(
+            'http' => array(
+                'method' => 'GET',
+                'header' => 'Authorization: Bearer ' . $token
+            )
+        );
+        $context = stream_context_create($options);
+        return json_decode(file_get_contents($url, false, $context));
+
     }
 
     public static function searchName($query)

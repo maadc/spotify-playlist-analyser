@@ -12,7 +12,7 @@
         <div class="container">
             <input class="form-input"
                    id="playlist-input"
-                   placeholder="search for playlist name" type="text"
+                   placeholder="search for playlist name, or paste an url/uri" type="text"
                    v-on:keyup.enter="fetchPlaylists">
             <button id="send" type="submit" v-on:click="fetchPlaylists()">
                 <img alt="start search" src="../../img/arrow-right.svg" title="go!">
@@ -21,7 +21,7 @@
 
         <!--
             The results of the playlist-search
-            todo: handly if any field are empty
+            todo: handle if any field are empty
         -->
 
         <div class="container hidden" id="result-container">
