@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helper\AuthHelper;
 use Illuminate\Support\Facades\DB;
 
 class AuthController extends Controller
@@ -27,15 +28,22 @@ class AuthController extends Controller
      * $ php artisan optimize
      * $ php artisan config:clear
      */
-    public static function key()
+
+    private $authHelper;
+
+    public function __construct(AuthHelper $authHelper)
+    {
+        $this->authHelper = $authHelper;
+    }
+
+    public function key()
     {
         $key = DB::table("access_tokens")->first();
-
         if ($key === null) {
             /*
              * access_token is nonexistent -> generate a new key
              */
-            $newKey = json_decode(self::getKey()->content());
+            $newKey = json_decode($this->authHelper->getKey()->content());
             DB::table('access_tokens')->insert(
                 [
                     'access_token' => $newKey->access_token,
@@ -50,51 +58,25 @@ class AuthController extends Controller
              * access_token is valid and not expired
              */
             DB::table("access_tokens")
-
                 ->update(['uses' => $key->uses + 1]);
             return $key->access_token;
         } else {
             /*
              * access_token is expired -> generate a new key
              */
-            $newKey = json_decode(self::getKey()->content());
+            $newKey = json_decode($this->authHelper->getKey()->content());
             DB::table('access_tokens')
                 ->where("access_token", $key->access_token)
                 ->update(
-                [
-                    'access_token' => $newKey->access_token,
-                    'expires' => now()->addSeconds($newKey->expires_in),
-                    'uses' => 1,
-                    'created_at' => now()
-                ]
-            );
+                    [
+                        'access_token' => $newKey->access_token,
+                        'expires' => now()->addSeconds($newKey->expires_in),
+                        'uses' => 1,
+                        'created_at' => now()
+                    ]
+                );
             return $newKey->access_token;
         }
-
-    }
-
-    public static function getKey()
-    {
-        $url = 'https://accounts.spotify.com/api/token';
-        $data = array(
-            'client_id' => env('SPOTIFY_CLIENTID'),
-            'client_secret' => env('SPOTIFY_CLIENTSECRET'),
-            'grant_type' => 'client_credentials');
-
-        $options = array(
-            'http' => array(
-                'header' => "Content-type: application/x-www-form-urlencoded",
-                'method' => 'POST',
-                'content' => http_build_query($data)
-            )
-        );
-        $context = stream_context_create($options);
-        $result = file_get_contents($url, false, $context);
-        if ($result === FALSE) {
-            return response("Authorization error ", 400);
-        }
-
-        return response($result, 200);
     }
 }
 

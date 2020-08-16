@@ -11,7 +11,7 @@ class accessToken extends Model
      *
      * @var string
      */
-    protected $table = 'accessTokens';
+    protected $table = 'access_tokens';
 
     /**
      * The primary key associated with the table.
@@ -19,11 +19,17 @@ class accessToken extends Model
      * @var string
      */
     protected $primaryKey = 'access_token';
+    protected $keyType = 'string';
 
     /**
      * Indicates if the model should be timestamped.
      *
      * @var bool
      */
-    public $timestamps = true;
+    public $timestamps = false;
+
+    /**
+     * fields which are allowed to be mass-assigned
+     */
+    protected $fillable = ['access_token', 'expires', 'created_at', 'uses'];
 }
