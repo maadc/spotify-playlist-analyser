@@ -18,4 +18,4 @@ use Illuminate\Support\Facades\Route;
 //Route::get('/auth', 'AuthController@key');
 
 Route::get('/playlist', 'RedirectController@home');
-Route::post('/playlist', 'PlaylistController@index')->name("searchPlaylist")->middleware('signed');
+Route::post('/playlist', 'SearchController@index')->name("searchPlaylist")->middleware('signed');

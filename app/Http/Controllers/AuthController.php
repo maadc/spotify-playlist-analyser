@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 class AuthController extends Controller
 {
     /*
-     * triggered: PlaylistController, TrackController
+     * triggered: SearchController, TrackController
      *
      * Returns an Spotify Access-Token which allows the other API-Requests to happen.
      *

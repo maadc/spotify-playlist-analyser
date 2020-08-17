@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helper\AuthHelper;
 use Illuminate\Support\Facades\DB;
 
 class TrackController extends Controller
@@ -22,7 +23,7 @@ class TrackController extends Controller
     public function trackAnalysis()
     {
         $playlist = json_decode(request("playlist"));
-        $token = AuthController::key();
+        $token = (new AuthController(new AuthHelper))->key();
 
         // Store the playlist data in the statistics db
         self::safePlaylistStatistic($playlist);
