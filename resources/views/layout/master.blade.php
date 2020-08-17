@@ -23,14 +23,14 @@
                         <li>
                             <a href="{{ route('start') }}" class="btn btn-link">Search</a>
                             <a href="{{ route('statistics') }}" class="btn btn-link">Statistics</a>
-                            <a href="" class="btn btn-link">About</a>
+                            {{--<a href="" class="btn btn-link">About</a>--}}
                         </li>
                     </ul>
                 </div>
                 <div class="hide-md">
                     <a href="{{ route('start') }}" class="btn btn-link">Search</a>
                     <a href="{{ route('statistics') }}" class="btn btn-link">Statistics</a>
-                    <a href="" class="btn btn-link">About</a>
+                    {{--<a href="" class="btn btn-link">About</a>--}}
                 </div>
             </section>
         </div>
@@ -46,8 +46,8 @@
 <footer class="">
     <div class="navbar col-sm-12 col-md-10 col-8 col-mx-auto">
         <section class="navbar-section">
-            <a href="" class="green btn btn-link">Legal notice</a>
-            <a href="" class="green btn btn-link">Data privacy</a>
+            <a href="{{ route('legalnotice') }}" class="green btn btn-link">Legal notice</a>
+            <a href="{{ route('dataprivacy') }}" class="green btn btn-link">Data privacy</a>
         </section>
         <section class="navbar-section">
             <span id="social-links">

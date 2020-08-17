@@ -22,7 +22,8 @@ body.container {
 
 h1, .h1,
 h2, .h2,
-h3, .h3 {
+h3, .h3,
+h4, .h4{
     color: $green;
 }
 
@@ -119,9 +120,15 @@ footer {
 * List-Stylings
 *
  */
+li{
+    color: white;
+}
 dd {
     margin: 0;
     border-bottom: 2px solid white;
+}
+dt {
+    color: white;
 }
 
 button.list[type="submit"] {
